@@ -2,18 +2,13 @@ public class ClassToConfigure
 {
     internal ServiceCollection _services = new ServiceCollection();
 
-    public ClassToConfigure(Action<ClassToConfigure> configure)
+    public ClassToConfigure(Action<IConfiguration<ClassToConfigure>> configure)
     {
+        var instance = new Configuration<ClassToConfigure>(this);
 
-        _services.AddSingleton<IGlobalConfiguration>(provider =>
-        {
-            var configInstance = GlobalConfiguration.configurationInstance;
+        _services.AddSingleton<IGlobalConfiguration>();
 
-            configure(this);
-
-            return configInstance;
-        });
-
+        configure(instance);
     }
 
 }

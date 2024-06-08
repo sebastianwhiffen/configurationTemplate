@@ -1,9 +1,9 @@
 public static class GlobalConfigurationExtensions
 {
-    public static ClassToConfigure AddLogging(
-        this ClassToConfigure configuration)
+    public static IConfiguration<ClassToConfigure> AddLogging(
+        this IConfiguration<ClassToConfigure> configuration)
     {
-        configuration._services.AddLogging(x => x.AddConsole());
+        configuration.Entry._services.AddLogging(x => x.AddConsole());
 
         return configuration;
     }

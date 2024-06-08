@@ -1,5 +1,6 @@
-public class GlobalConfiguration : IGlobalConfiguration
+public class Configuration<T> : IConfiguration<T>
 {
-    public static GlobalConfiguration configurationInstance = new GlobalConfiguration();
+    public T Entry { get; }
 
+    public Configuration(T entry) => Entry = entry;
 }
